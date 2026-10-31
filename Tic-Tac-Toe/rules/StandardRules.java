@@ -1,28 +1,27 @@
 package rules;
 
 import board.Board;
-// import Symbol.Symbol;
 import enums.*;
 
 public class StandardRules extends Rules {
 
     @Override
-    public boolean checkWin(Board board, Symbol Symbol) {
+    public boolean checkWin(Board board, Symbol symbol) {
         for (int i = 0; i < Board.SIZE; i++) {
-            if (board.getCell(i, 0) == Symbol && board.getCell(i, 1) == Symbol && board.getCell(i, 2) == Symbol) {
+            if (board.getCell(i, 0) == symbol && board.getCell(i, 1) == symbol && board.getCell(i, 2) == symbol) {
                 return true;
             }
 
-            if (board.getCell(0, i) == Symbol && board.getCell(1, i) == Symbol && board.getCell(2, i) == Symbol) {
+            if (board.getCell(0, i) == symbol && board.getCell(1, i) == symbol && board.getCell(2, i) == symbol) {
                 return true;
             }
         }
 
-        if (board.getCell(0, 0) == Symbol && board.getCell(1, 1) == Symbol && board.getCell(2, 2) == Symbol) {
+        if (board.getCell(0, 0) == symbol && board.getCell(1, 1) == symbol && board.getCell(2, 2) == symbol) {
             return true;
         }
 
-        if (board.getCell(0, 2) == Symbol && board.getCell(1, 1) == Symbol && board.getCell(2, 0) == Symbol) {
+        if (board.getCell(0, 2) == symbol && board.getCell(1, 1) == symbol && board.getCell(2, 0) == symbol) {
             return true;
         }
 
