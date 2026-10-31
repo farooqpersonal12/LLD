@@ -67,9 +67,9 @@ public class Game {
                 continue;
             }
 
-            board.placeMark(row, col, current.symbol);
+            board.placeMark(row, col, current.getSymbol());
 
-            if (rules.checkWin(board, current.symbol)) {
+            if (rules.checkWin(board, current.getSymbol())) {
                 board.display();
                 System.out.println(current.getName() + " wins!");
                 isGameover = true;

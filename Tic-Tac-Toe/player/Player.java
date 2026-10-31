@@ -1,17 +1,16 @@
 package player;
 
 import enums.Symbol;
-// import symbol.symbol;
 
 public class Player {
     private int id;
     private String name;
-    public Symbol symbol;
+    private Symbol symbol;
 
     public Player(int id, String name, Symbol symbol) {
         this.id = id;
         this.name = name;
-        this.symbol = Symbol.EMPTY;
+        this.symbol = symbol;
     }
 
     public int getId() {

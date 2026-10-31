@@ -2,7 +2,7 @@ package rules;
 
 import board.Board;
 import enums.Symbol;
-import symbol.symbol;
+
 
 public abstract class Rules {
     public abstract boolean checkWin(Board board, Symbol symbol);

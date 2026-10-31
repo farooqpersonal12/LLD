@@ -1,17 +1,13 @@
 package board;
 
 import enums.Symbol;
-import symbol.symbol;
 
 public class Board {
     public static final int SIZE = 3;
 
     private Symbol[][] grid;
-    private symbol emptyCell;
 
     public Board() {
-        // emptyCell = new symbol();
-        // emptyCell.setMark('_');
         grid = new Symbol[SIZE][SIZE];
 
         for (int i = 0; i < SIZE; i++) {
