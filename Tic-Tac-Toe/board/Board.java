@@ -22,13 +22,23 @@ public class Board {
     }
 
     public void placeMark(int row, int col, Symbol mark) {
-        if (isCellEmpty(row, col)) {
-            grid[row][col] = mark;
+        if (!isInBounds(row, col)) {
+            throw new IllegalArgumentException(
+                    "Cell (" + row + "," + col + ") is outside the board");
         }
+        if (!isCellEmpty(row, col)) {
+            throw new IllegalStateException(
+                    "Cell (" + row + "," + col + ") is already occupied");
+        }
+        grid[row][col] = mark; 
     }
 
     public Symbol getCell(int row, int col) {
-        return grid[row][col];
+        if (!isInBounds(row, col)) {
+            throw new IllegalArgumentException(
+                    "Cell (" + row + "," + col + ") is outside the board");
+        }
+        return grid[row][col]; 
     }
 
     public void display() {

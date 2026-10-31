@@ -2,6 +2,7 @@ package game;
 
 import java.util.Deque;
 import java.util.Scanner;
+
 import board.Board;
 import player.Player;
 import rules.Rules;
@@ -35,7 +36,7 @@ public class Game {
             board.display();
 
             Player current = players.removeFirst();
-            System.out.println(current.getName() + ", enter row and column (1-3):");
+            System.out.println(current.getName() + ", enter row and column (1-" + Board.SIZE + "):");
 
             if (!scanner.hasNextInt()) {
                 if (!scanner.hasNext()) {
@@ -61,13 +62,13 @@ public class Game {
             }
             int col = scanner.nextInt() - 1;
 
-            if (!rules.isValidMove(board, row, col)) {
-                System.out.println("Invalid move. Try again.");
+            try {
+                board.placeMark(row, col, current.getSymbol());
+            } catch (IllegalArgumentException | IllegalStateException e) {
+                System.out.println("Invalid move. " + e.getMessage() + " Try again.");
                 players.addFirst(current);
                 continue;
             }
-
-            board.placeMark(row, col, current.getSymbol());
 
             if (rules.checkWin(board, current.getSymbol())) {
                 board.display();
