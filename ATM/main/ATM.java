@@ -8,7 +8,7 @@ import state.*;
 
 public class ATM {
     private String atmID;
-    private ATMstate Curentstate;
+    private ATMstate Currentstate;
 
     private CardReader cardReader;
     private Keypad keypad;
@@ -16,51 +16,71 @@ public class ATM {
     private CashDispenser cashDispenser;
     private ReceiptPrinter receiptPrinter;
 
-    private BankService bankServivce;
+    private BankService bankService;
 
-    public ATM(String atmID, ATMstate curentstate, CardReader cardReader, Keypad keypad, Screen screen,
+    public ATM(String atmID, ATMstate currentstate, CardReader cardReader, Keypad keypad, Screen screen,
             CashDispenser cashDispenser, ReceiptPrinter receiptPrinter, BankServivce bankServivce) {
         this.atmID = atmID;
-        Curentstate = curentstate;
+        Currentstate = currentstate;
         this.cardReader = cardReader;
         this.keypad = keypad;
         this.screen = screen;
         this.cashDispenser = cashDispenser;
         this.receiptPrinter = receiptPrinter;
-        this.bankServivce = bankServivce;
+        this.bankService = bankService;
     }
 
     public void setState(ATMstate state) {
-        this.Curentstate = state;
+        this.Currentstate = state;
     }
 
     public ATMstate getCurrentState() {
-        return Curentstate;
+        return Currentstate;
     }
 
-    public void insertCard();
+    public void insertCard(){
+        Currentstate.insertCard();
+    }
 
-    public void enterPin(String pin);
+    public void enterPin(String pin){
+        Currentstate.enterPin(pin);
+    }
 
-    public void checkBalance();
+    public void checkBalance(){
+        Currentstate.checkBalance();
+    }
 
-    public void withdraw(BigDecimal amount);
+    public void withdraw(BigDecimal amount){
+        Currentstate.withdraw(amount);
+    }
 
-    public void deposit(BigDecimal amount);
+    public void deposit(BigDecimal amount){
+        Currentstate.deposit(amount);
+    }
 
-    public void ejectCard();
+    public void ejectCard(){
+        Currentstate.ejectCard();
+    }
 
     public void startSession() {
-
     }
 
-    public void endSession();
+    public void endSession(){
+    }
 
     public boolean validateCard(Card card) {
-        boolean isValidCard = bankServivce.validateCard(card);
+        boolean isValidCard = bankService.validateCard(card);
     }
 
     public CardReader getCardReader() {
         return cardReader;
+    }
+
+    public Screen getScreen(){
+        return screen;
+    }
+
+    public Keypad getKeypad(){
+        return keypad;
     }
 }
