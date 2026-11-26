@@ -1,6 +1,7 @@
 package model;
 
 import main.ATM;
+import model.bank.BankAccount;
 import model.bank.BankService;
 
 public class CardReader {
@@ -40,6 +41,15 @@ public class CardReader {
 
     public boolean isCardInserted() {
         return cardInserted;
+    }
+
+    public Card getCard() {
+        return currentCard;
+    }
+
+    public BankAccount getBankAccount() {
+        String bank = currentCard.getBankIdentifier();
+        
     }
 
 }

@@ -5,7 +5,7 @@ import main.ATM;
 public interface ATMstate {
     void insertCard();
 
-    void enterPin(String pin);
+    void enterPin();
 
     void checkBalance();
 

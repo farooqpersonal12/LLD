@@ -3,9 +3,8 @@ package state;
 import java.math.BigDecimal;
 
 import main.ATM;
-import model.Keypad;
 
-public class CardInsertedState implements ATMstate{
+public class CardInsertedState implements ATMstate {
 
     private final ATM atm;
 
@@ -19,8 +18,17 @@ public class CardInsertedState implements ATMstate{
     }
 
     @Override
-    public void enterPin(String pin) {
-       String PIN = atm.getKeypad().takeInput();
+    public void enterPin() {
+        String PIN = atm.getKeypad().takeInput();
+
+        if (atm.getBankService().authenticatePin(atm.getCardReader().readCard(), PIN)) {
+            atm.getScreen().DisplayPINAuthenticatedMessage();
+            atm.setState(new AuthenticatedState(atm));
+            atm.getScreen().DisplayTransaction();
+        }else{
+            atm.getScreen().DisplayIncorrectPINMessage();
+            ejectCard();
+        }
     }
 
     @Override
@@ -40,7 +48,8 @@ public class CardInsertedState implements ATMstate{
 
     @Override
     public void ejectCard() {
-        throw new UnsupportedOperationException("Unimplemented method 'ejectCard'");
+        atm.getCardReader().ejectCard();
+        atm.setState(new IdleState(atm));
     }
-    
+
 }

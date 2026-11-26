@@ -19,7 +19,7 @@ public class ATM {
     private BankService bankService;
 
     public ATM(String atmID, ATMstate currentstate, CardReader cardReader, Keypad keypad, Screen screen,
-            CashDispenser cashDispenser, ReceiptPrinter receiptPrinter, BankServivce bankServivce) {
+            CashDispenser cashDispenser, ReceiptPrinter receiptPrinter, BankServivce bankServivce, Card card) {
         this.atmID = atmID;
         Currentstate = currentstate;
         this.cardReader = cardReader;
@@ -38,34 +38,34 @@ public class ATM {
         return Currentstate;
     }
 
-    public void insertCard(){
+    public void insertCard() {
         Currentstate.insertCard();
     }
 
-    public void enterPin(String pin){
-        Currentstate.enterPin(pin);
+    public void enterPin() {
+        Currentstate.enterPin();
     }
 
-    public void checkBalance(){
+    public void checkBalance() {
         Currentstate.checkBalance();
     }
 
-    public void withdraw(BigDecimal amount){
+    public void withdraw(BigDecimal amount) {
         Currentstate.withdraw(amount);
     }
 
-    public void deposit(BigDecimal amount){
+    public void deposit(BigDecimal amount) {
         Currentstate.deposit(amount);
     }
 
-    public void ejectCard(){
+    public void ejectCard() {
         Currentstate.ejectCard();
     }
 
     public void startSession() {
     }
 
-    public void endSession(){
+    public void endSession() {
     }
 
     public boolean validateCard(Card card) {
@@ -76,11 +76,15 @@ public class ATM {
         return cardReader;
     }
 
-    public Screen getScreen(){
+    public Screen getScreen() {
         return screen;
     }
 
-    public Keypad getKeypad(){
+    public Keypad getKeypad() {
         return keypad;
+    }
+
+    public BankService getBankService() {
+        return bankService;
     }
 }

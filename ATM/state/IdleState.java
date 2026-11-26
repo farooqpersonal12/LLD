@@ -34,7 +34,7 @@ public class IdleState implements ATMstate {
     }
 
     @Override
-    public void enterPin(String pin) {
+    public void enterPin() {
         throw new UnsupportedOperationException("Unimplemented method 'enterPin'");
     }
 
