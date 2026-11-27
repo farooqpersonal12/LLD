@@ -1,15 +1,18 @@
 package model.bank;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 import model.Card;
 
-public class SBI implements BankService{
+public class SBI implements BankService {
 
     @Override
     public boolean validateCard(Card card) {
         return card.isExpired();
     }
+
+    ArrayList<BankAccount> accounts = new ArrayList<>();
 
     @Override
     public boolean authenticatePin(Card card, String pin) {
@@ -19,14 +22,18 @@ public class SBI implements BankService{
 
     @Override
     public BigDecimal checkBalance(BankAccount account) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'checkBalance'");
+
+        for (BankAccount bankAccount : accounts) {
+            if (account.getAccountNumber().equals(bankAccount.getAccountNumber())) {
+                return bankAccount.getBalance();
+            }
+        }
+        return null;
     }
 
     @Override
     public boolean withdraw(BankAccount account, BigDecimal amount) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'withdraw'");
+        
     }
 
     @Override
@@ -40,5 +47,10 @@ public class SBI implements BankService{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'transfer'");
     }
-    
+
+    // @Override
+    // public BankAccount getBankAccount(Card card) {
+
+    // }
+
 }

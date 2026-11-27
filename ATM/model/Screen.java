@@ -1,5 +1,7 @@
 package model;
 
+import java.math.BigDecimal;
+
 public class Screen {
 
     public void DisplayCardAccepted() {
@@ -32,9 +34,9 @@ public class Screen {
     }
 
     public void DisplayTransactionTpres() {
-        System.out.print("1.Check Balance");
-        System.out.print("2.Withdraw");
-        System.out.print("3.Deposite");
+        System.out.println("1.Check Balance");
+        System.out.println("2.Withdraw");
+        System.out.println("3.Deposite");
         System.out.println("Please enter number : ");
     }
 
@@ -49,6 +51,17 @@ public class Screen {
     public void DisplayInvalidAmountEnterMessage() {
         System.out.println("Invalid amount. Please enter a number.");
     }
+    
+    public void DisplayBalance(BigDecimal amount){
+        System.out.println("Available balance: "+amount);
+    }
+
+    public void DisplaySuccessfullWithdrawMessage(BigDecimal withdrawl,Object ballance){
+        System.out.println("Withdrawl successfull.");
+        System.out.println("Withdrawl amount : "+withdrawl);
+        System.out.println("New ballance: "+ballance);
+    }
+
     
 
 }

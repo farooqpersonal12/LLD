@@ -47,9 +47,6 @@ public class CardReader {
         return currentCard;
     }
 
-    public BankAccount getBankAccount() {
-        String bank = currentCard.getBankIdentifier();
-        
-    }
+    
 
 }

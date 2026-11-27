@@ -11,5 +11,6 @@ public interface BankService {
     boolean withdraw(BankAccount account, BigDecimal amount);
     boolean deposit(BankAccount account, BigDecimal amount);
     boolean transfer(BankAccount from, BankAccount to, BigDecimal amount);
+    BankAccount getBankAccount(Card card);
 
 }
